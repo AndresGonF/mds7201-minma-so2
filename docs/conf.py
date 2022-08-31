@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Ppronostico_SO2_QP documentation build configuration file, created by
+# Pronostico_SO2_QP documentation build configuration file, created by
 # sphinx-quickstart.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Ppronostico_SO2_QP'
+project = u'Pronostico_SO2_QP'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -185,7 +185,7 @@ latex_elements = {
 latex_documents = [
     ('index',
      'mds7201-minma-so2.tex',
-     u'Ppronostico_SO2_QP Documentation',
+     u'Pronostico_SO2_QP Documentation',
      u"Nicolas Cabello - Andrés González - Javier Maass - Consuelo Rojas", 'manual'),
 ]
 
@@ -215,7 +215,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'mds7201-minma-so2', u'Ppronostico_SO2_QP Documentation',
+    ('index', 'mds7201-minma-so2', u'Pronostico_SO2_QP Documentation',
      [u"Nicolas Cabello - Andrés González - Javier Maass - Consuelo Rojas"], 1)
 ]
 
@@ -229,8 +229,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'mds7201-minma-so2', u'Ppronostico_SO2_QP Documentation',
-     u"Nicolas Cabello - Andrés González - Javier Maass - Consuelo Rojas", 'Ppronostico_SO2_QP',
+    ('index', 'mds7201-minma-so2', u'Pronostico_SO2_QP Documentation',
+     u"Nicolas Cabello - Andrés González - Javier Maass - Consuelo Rojas", 'Pronostico_SO2_QP',
      'Sistema de pronóstico de concentración de dióxido de azufre en la zona Quintero - Puchuncaví', 'Miscellaneous'),
 ]
 
