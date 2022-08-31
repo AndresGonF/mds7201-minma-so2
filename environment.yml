@@ -1,0 +1,10 @@
+name: minma-so2
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - pip
+  - matplotlib
+prefix: /home/agonzalez/miniconda3/envs/minma-so2
