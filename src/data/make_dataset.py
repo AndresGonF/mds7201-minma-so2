@@ -51,7 +51,8 @@ def get_minma_data(param_list, station, from_last=None, to_date=-1):
         param_df = pd.read_csv(path,
                                 sep=';',
                                 usecols=range(5),
-                                index_col=[0,1]
+                                index_col=[0,1],
+                                decimal=','
                                 ).add_suffix(f'_{param}')
         param_df_list.append(param_df)
     station_df = reduce(lambda  left,right: pd.merge(left,right,on=['FECHA (YYMMDD)', 'HORA (HHMM)']), param_df_list)
