@@ -28,7 +28,6 @@ def adjust_index(minma_df):
 def get_minma_data(param_list, station, from_last=None, to_date=-1, n_cols = 5):
     """Recibe una lista de parámetros para una estación y entrega
     un DataFrame con datos dentro de algún período.
-
     Parameters
     ----------
     param_list : list[str]
@@ -39,7 +38,6 @@ def get_minma_data(param_list, station, from_last=None, to_date=-1, n_cols = 5):
         str indicando el tiempo hacia atrás a considerar.
     to_date : str
         str indicando la fecha hacia el presente a considerar.
-
     Returns
     -------
     pd.DataFrame
