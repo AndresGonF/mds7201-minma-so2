@@ -10,10 +10,10 @@ def series_plot(data_df,ylabel_list):
     plt.tight_layout(rect=[0, 0, 1, 0.98])
     plt.show()
 
-def hist_plot(data_df, xlabel_list, **kwargs):
+def hist_plot(data_df, xlabel_list, n_rows=2, **kwargs):
     axes = data_df.hist(figsize=(20,3*data_df.shape[1]), bins=30)
     for idx in range(data_df.shape[1]):
-        ax = axes[idx // 2, idx % 2]
+        ax = axes[idx // n_rows, idx % n_rows]
         ax.set_xlabel(xlabel_list[idx])
         if kwargs != None:
             ax.set(**kwargs)
