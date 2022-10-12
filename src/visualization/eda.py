@@ -34,12 +34,12 @@ def lag_plot(data_df, lag, unit):
     fig.tight_layout(rect=[0, 0, 1, 0.98])
     plt.show()    
 
-def conf_matrix(data_df):
+def conf_matrix(data_df, size = (10,10)):
     data_corr = data_df.corr(method='pearson')
     
     heat_map = sns.heatmap(data_corr,  vmax=.8, center=0,
             square=True, linewidths=.5, cbar_kws={"shrink": .5}, annot=True, fmt='.2f', cmap='viridis')
-    heat_map.figure.set_size_inches(10,10)
+    heat_map.figure.set_size_inches(size[0],size[1])
     
     plt.show()
 
