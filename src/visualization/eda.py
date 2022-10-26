@@ -24,11 +24,17 @@ def hist_plot(data_df, xlabel_list, **kwargs):
 
 def lag_plot(data_df, lag, unit):
     n_rows = data_df.shape[1] // 3
+    if n_rows == 0:
+        n_rows = 1
     fig, ax = plt.subplots(n_rows, 3, figsize=(20,10))
 
     for idx, col in enumerate(data_df.columns):
-        pd.plotting.lag_plot(data_df[col], lag=lag, ax=ax[idx//3, idx%3])
-        ax[idx//3, idx%3].set_title(col)
+        if n_rows == 1:
+            axes = ax[idx%3]
+        else:
+            axes = ax[idx//3, idx%3]
+        pd.plotting.lag_plot(data_df[col], lag=lag, ax=axes)
+        axes.set_title(col)
 
     fig.suptitle(f'Lag plot - {lag} {unit}', fontsize=20)
     fig.tight_layout(rect=[0, 0, 1, 0.98])
