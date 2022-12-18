@@ -1,11 +1,16 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from matplotlib.patches import Rectangle
 
-def series_plot(data_df,ylabel_list):
+def series_plot(data_df,ylabel_list, dates=None):
     axes = data_df.plot(figsize=(20,5*data_df.shape[1]),subplots=True, sharex=True)
     for idx, ax in enumerate(axes):
         ax.set_ylabel(ylabel_list[idx])
+        if dates != None:
+            # print(dates[idx])
+            # date_range = pd.date_range(dates[idx],  pd.to_datetime(dates[idx])+pd.Timedelta('23H'), freq='1H')
+            ax.vlines(x=dates, ymin=data_df.iloc[:,idx].min(), ymax=data_df.iloc[:,idx].max(), alpha=0.2, color='red')
     plt.suptitle('Visualización histórica de datos',fontsize=15)
     plt.tight_layout(rect=[0, 0, 1, 0.98])
     plt.show()

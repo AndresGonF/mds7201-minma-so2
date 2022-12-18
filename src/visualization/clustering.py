@@ -27,7 +27,7 @@ def weekly_cluster_distribution(y_pred, df_list):
 def plot_cluster_centers(clust_centers, names, ylabel):
     n_clusters, _, n_dim = clust_centers.shape
 
-    fig, ax = plt.subplots(n_dim, figsize=(18,8),sharex=True)
+    fig, ax = plt.subplots(n_dim, figsize=(18,5*n_dim),sharex=True)
 
     if n_dim == 1:
         ax = [ax]
@@ -38,7 +38,8 @@ def plot_cluster_centers(clust_centers, names, ylabel):
     for idx in range(n_clusters*n_dim):
         ax[idx//n_clusters].plot(hours, clust_centers[idx%n_clusters, :, idx%n_dim], lines[idx%n_clusters])
         ax[idx // n_clusters].set_ylabel(ylabel)
-    # ax.legend(names)
+    ax[-1].set_title('Visualización de centroides de clústers')
+    ax[-1].legend(names)
     ax[-1].set_xlabel("Hora del día")
     ax[-1].xaxis.set_major_locator(plt.MaxNLocator(12))
     ax[-1].xaxis.set_tick_params(rotation=15)

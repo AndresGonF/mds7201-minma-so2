@@ -1,11 +1,11 @@
 from time import time
-from tslearn.preprocessing import TimeSeriesScalerMinMax
+from tslearn.preprocessing import TimeSeriesScalerMeanVariance
 from sklearn import metrics
 
 
 def bench_k_means(kmeans, name, data, n_clusters):
     t0 = time()
-    data = TimeSeriesScalerMinMax().fit_transform(data)
+    data = TimeSeriesScalerMeanVariance().fit_transform(data)
     clustered = kmeans.fit_predict(data)
     fit_time = time() - t0
     inertia = kmeans.inertia_
