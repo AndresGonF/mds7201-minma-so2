@@ -164,3 +164,17 @@ def daily_stats(df_list_daily):
         calculados.
     """       
     return np.array([df.describe().loc[['min', 'max', 'mean', 'std']].values for df in df_list_daily])
+
+    def time_describe(data_df, col, res, from_date, to_date, highlights=False):
+    df = data_df.copy()
+    df[res] = df.index.strftime(f'%{res[0]}')
+    stats_df = df[from_date:to_date][[res,col]].groupby(res).describe()
+    if highlights:
+        display(
+            stats_df.style\
+                .format('{:.2f}')\
+                .highlight_max(color = 'green', axis = 0)\
+                .highlight_min(color = 'red', axis = 0)
+        )
+    else:
+        display(stats_df)

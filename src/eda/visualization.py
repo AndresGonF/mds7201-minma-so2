@@ -252,3 +252,42 @@ def cumdistr_comparacion_horaria(df1, df2, df1_label, df2_label, column):
         ax.legend([df1_label, df2_label])
     fig.suptitle(f'Comparación de distribución acumulada por hora - {column}', y=0.99)
     plt.tight_layout()
+
+def plot_estabilidad_TDiff(data_df):
+    df_days = np.array([g for n, g in data_df[['T_diff']].groupby(pd.Grouper(freq='D')) if not g.empty], dtype=object)
+    stats_daily = daily_stats(df_days)
+
+    fig, ax = plt.subplots(figsize=(15,8))
+
+    ax.hist(stats_daily[:,0,0],bins=40, alpha=0.7)
+    A = ax.vlines(-1.9, 0, 280, linestyles='dashed', color='red')
+    B= ax.vlines(-1.7, 0, 280, linestyles='dashed', color='blue')
+    C=ax.vlines(-1.5, 0, 280, linestyles='dashed', color='green')
+    D=ax.vlines(-0.5, 0, 280, linestyles='dashed', color='yellow')
+    E=ax.vlines(1.5, 0, 280, linestyles='dashed', color='brown')
+    F=ax.vlines(4.0, 0, 280, linestyles='dashed', color='black')
+    ax.legend([A,B,C,D,E,F], ['-1.9','-1.7','-1.5','-0.5','1.5','4.0'])
+    ax.set_ylim(0,200)
+    ax.set_xlabel('T_diff mean')
+    ax.set_title('Distribución de promedios diarios de T_diff')
+
+def plot_estabilidad_SigDir(data_df):
+    df_days = np.array([g for n, g in data_df[['SigDir_10', 'SigDir_20', 'SigDir_40']].groupby(pd.Grouper(freq='D')) if not g.empty], dtype=object)
+    fig, ax = plt.subplots(figsize=(15,8))
+
+    stats_daily = daily_stats(df_days) 
+
+    ax.hist(stats_daily[:,0,0],bins=40, alpha=0.5)
+    ax.hist(stats_daily[:,0,1],bins=40, alpha=0.5)
+    ax.hist(stats_daily[:,0,2],bins=40, alpha=0.5)
+    ax.legend(['SigDir_10', 'SigDir_20', 'SigDir_40'])
+    A = ax.vlines(25, 0, 280, linestyles='dashed', color='red')
+    B= ax.vlines(20, 0, 280, linestyles='dashed', color='blue')
+    C=ax.vlines(15, 0, 280, linestyles='dashed', color='green')
+    D=ax.vlines(10, 0, 280, linestyles='dashed', color='yellow')
+    E=ax.vlines(5, 0, 280, linestyles='dashed', color='brown')
+    F=ax.vlines(2.5, 0, 280, linestyles='dashed', color='black')
+    G=ax.vlines(1.7, 0, 280, linestyles='dashed', color='lightblue')
+    ax.set_ylim(0,200)
+    ax.set_xlabel('SigDir mean')
+    ax.set_title('Distribución de promedios diarios\nde SigDir a distintas alturas') 
