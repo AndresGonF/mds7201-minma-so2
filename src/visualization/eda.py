@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from matplotlib.patches import Rectangle
+import numpy as np
 
 def series_plot(data_df,ylabel_list, dates=None):
     axes = data_df.plot(figsize=(20,5*data_df.shape[1]),subplots=True, sharex=True)
@@ -15,17 +16,6 @@ def series_plot(data_df,ylabel_list, dates=None):
     plt.tight_layout(rect=[0, 0, 1, 0.98])
     plt.show()
 
-def hist_plot(data_df, xlabel_list, **kwargs):
-    axes = data_df.hist(figsize=(20,3*data_df.shape[1]), bins=30)
-    for idx in range(data_df.shape[1]):
-        ax = axes[idx // 2, idx % 2]
-        ax.set_xlabel(xlabel_list[idx])
-        if kwargs != None:
-            ax.set(**kwargs)
-        ax.set_xticklabels(ax.get_xticks(), rotation = 45)
-    plt.suptitle('Visualización de la distribución de datos', fontsize=15)
-    plt.tight_layout(rect=[0, 0, 1, 0.98])
-    plt.show()
 
 def lag_plot(data_df, lag, unit):
     n_rows = data_df.shape[1] // 3
@@ -45,14 +35,17 @@ def lag_plot(data_df, lag, unit):
     fig.tight_layout(rect=[0, 0, 1, 0.98])
     plt.show()    
 
-def conf_matrix(data_df):
+def conf_matrix(data_df, ax=None, abs=True):
+    if ax is None:
+        ax = plt.gca()
     data_corr = data_df.corr(method='pearson')
+    # .loc[['SO2']].T.sort_values('SO2', ascending=False)
+    if abs:
+        data_corr = data_corr.abs()
+    heat_map = sns.heatmap(data_corr.loc[['SO2']].T.sort_values('SO2', ascending=False), vmin=0, vmax=1, center=0, linewidths=.1,# square=True, cbar_kws={"shrink": .5},
+                            annot=True, fmt='.2f', cmap='viridis')
+    # heat_map.figure.set_size_inches(10,10)
     
-    heat_map = sns.heatmap(data_corr,  vmax=.6, center=0,
-            square=True, linewidths=.5, cbar_kws={"shrink": .5}, annot=True, fmt='.2f', cmap='viridis')
-    heat_map.figure.set_size_inches(10,10)
-    
-    plt.show()
 
 def time_describe(data_df, col, res, from_date, to_date, highlights=False):
     df = data_df.copy()
