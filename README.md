@@ -4,8 +4,7 @@ Pronostico_SO2_QP
 Sistema de pronóstico de concentración de dióxido de azufre en la zona Quintero - Puchuncaví
 
 # Informe final
-Pendiente el link
-
+- [Acceso al informe](reports/Informe_MDS.pdf)
 
 # Desarrollo del proyecto
 
