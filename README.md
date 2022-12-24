@@ -3,6 +3,44 @@ Pronostico_SO2_QP
 
 Sistema de pronóstico de concentración de dióxido de azufre en la zona Quintero - Puchuncaví
 
+# Informe final
+Pendiente el link
+
+
+# Desarrollo del proyecto
+
+## EDAs de set de datos 🦴
+- [EDA Maitenes](notebooks/1.0-EDA-Maitenes.ipynb)
+- [EDA Quintero](notebooks/1.1-EDA-Quintero.ipynb)
+- [EDA Ventanas](notebooks/1.2-EDA-Ventanas.ipynb)
+- [EDA Torre Meteorológica](notebooks/1.3-EDA-torre-meteo-Codelco_ventanas.ipynb)
+- [EDA CEMS](notebooks/1.4-EDA-CEMS-Quintero.ipynb)
+- [Series normalizadas](notebooks/1.5-Series-Normalizadas.ipynb)
+
+## Cruce de datos
+- [Cruce de datos Maitenes](notebooks/2.0-Maitenes-cruce-de-datos.ipynb)
+- [Curce de datos Quintero](notebooks/2.1-Quintero-cruce-de-datos.ipynb)
+
+## Comparación entre estaciones
+- [Comparación entre estaciones](notebooks/3.0-Comparacion-estaciones.ipynb)
+- [Análisis de duración de peaks](notebooks/3.1-Duracion-peaks.ipynb)
+
+## Convolución entre datos
+- [Convoluciones Maitenes](notebooks/4.0-Maitenes-convolution.ipynb)
+- [Convoluciones Quintero](notebooks/4.1-Quintero-convolution.ipynb)
+
+## Análisis previo de modelos
+- [Análisis con Prophet](notebooks/5.0-Prophet-SO2.ipynb)
+
+## Comparación gráfica de vientos
+- [Generación de imágenes de viento](notebooks/6.0-img-vientos.ipynb)
+
+## Anexo
+- [Obtención de datos desde API](notebooks/Anexo-data-from-API.ipynb)
+- [Clustering de Maitenes](notebooks/Anexo-Maitenes-clustering.ipynb)
+- [Ordenamiento de datos desde CSVs de SINCA](notebooks/Anexo-ordenamiento-de-datos.ipynb)
+
+
 --------
 
 ## Referencias:.
