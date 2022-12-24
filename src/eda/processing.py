@@ -178,3 +178,10 @@ def time_describe(data_df, col, res, from_date, to_date, highlights=False):
         )
     else:
         display(stats_df)
+
+def shared_dates(date_list1, date_list2, name1, name2):
+    n_dates1 = len(date_list1)
+    n_dates2 = len(date_list2)
+    intersections = np.intersect1d(np.array(date_list1), np.array(date_list2))
+    print(f'{name1} peak days: {n_dates1} - {name2} peak days: {n_dates2} -> Intersections: {intersections.shape[0]}')
+    return intersections

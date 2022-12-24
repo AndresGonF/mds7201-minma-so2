@@ -168,7 +168,7 @@ def plot_peak_counts(data_peaks_df, data_df, estacion, include_days=True, includ
     plt.tight_layout()
     plt.show()
 
-def plot_temp(df_daily, station, type='cumdistr', figsize=(20,80)):
+def plot_temp(df_daily, station, labels, type='cumdistr', figsize=(20,80)):
     """Recibe una lista de DataFrames y grafica la distribución acumulada o el
     histograma de las estadísticas diarias de cada columna, para una 
     determinada estación.
@@ -211,7 +211,7 @@ def plot_temp(df_daily, station, type='cumdistr', figsize=(20,80)):
                 elif type=='hist':
                     ax.hist(df[:, col, row], alpha=0.5, density=True, bins=30)
             # ax.hist(stats_daily2[:, col, row], alpha=0.5, density=True, bins=30)
-            ax.legend(['Peak days', 'Normal days'])
+            ax.legend(labels)
             ax.set_xlabel(metrics[col])
     plt.tight_layout()
     plt.show()
@@ -290,4 +290,22 @@ def plot_estabilidad_SigDir(data_df):
     G=ax.vlines(1.7, 0, 280, linestyles='dashed', color='lightblue')
     ax.set_ylim(0,200)
     ax.set_xlabel('SigDir mean')
-    ax.set_title('Distribución de promedios diarios\nde SigDir a distintas alturas') 
+    ax.set_title('Distribución de promedios diarios\nde SigDir a distintas alturas')
+
+def df_convolve(df, column1, column2, estacion):
+    norm_column1 = (df[column1] - df[column1].mean()) / df[column1].std()
+    norm_column2 = (df[column2] - df[column2].mean()) / df[column2].std()
+    convolved = np.convolve(norm_column1, norm_column2, mode='same')
+    dates = df.index
+
+    fig, ax = plt.subplots(3, figsize=(20,10))
+
+    ax[0].plot(norm_column1)
+    ax[0].set_title(column1)
+    ax[1].plot(norm_column2)
+    ax[1].set_title(column2)
+    ax[2].plot(dates, convolved)
+    ax[2].set_title('Convolución entre las dos variables')
+    plt.suptitle(f'Comparación con convolución entre {column1} y {column2} - {estacion}')
+    plt.tight_layout()
+    plt.show()
