@@ -165,7 +165,7 @@ def daily_stats(df_list_daily):
     """       
     return np.array([df.describe().loc[['min', 'max', 'mean', 'std']].values for df in df_list_daily])
 
-    def time_describe(data_df, col, res, from_date, to_date, highlights=False):
+def time_describe(data_df, col, res, from_date, to_date, highlights=False):
     df = data_df.copy()
     df[res] = df.index.strftime(f'%{res[0]}')
     stats_df = df[from_date:to_date][[res,col]].groupby(res).describe()
